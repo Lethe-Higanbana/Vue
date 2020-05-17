@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的基本代码</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<!--将来new的Vue实例会根据id来控制这个元素区域的所有内容-->
+<!--Vue控制的区域就是 MVVM 中的 V-->
+<div id="app">
+    <p>{{msg}}</p>
+</div>
+</body>
+<script>
+    // 创建一个Vue实例，这个实例就是 MVVM 的 VM 调度者
+    var vm = new Vue({
+        el:'#app', //要控制的区域，就是上面的那个id
+        /*data 就是 MVVM 的 M 专门保存数据*/
+        data:{
+            // 要使用的数据
+            msg:'欢迎学习Vue'
+        }
+    })
+</script>
+</html>
