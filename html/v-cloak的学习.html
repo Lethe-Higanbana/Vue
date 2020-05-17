@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-cloak</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+<div id="app">
+    <!-- v-cloak 解决插值表达式闪烁的问题，就是网络延迟的时候会出现 {{msg}} 的问题，v-cloak可以解决-->
+    <p v-cloak>{{msg}}</p>
+    <!--和{{msg}}差不多，但是v-text默认没有闪烁问题，会覆盖元素原本内容-->
+    <h4 v-text="msg"></h4>
+    <p>{{msg2}}</p>
+    <p v-text="msg2"></p>
+    <!--v-html允许插入html标签-->
+    <div v-html="msg2">111111</div>
+</div>
+</body>
+<script>
+    // 创建Vue实例
+    var vm = new Vue({
+         // 控制区域
+        el:'#app',
+        // 传递数据
+        data:{
+            msg:'123',
+            msg2:'<h1>Hello word !</h1>'
+        }
+    })
+</script>
+</html>
