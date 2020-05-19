@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- v-on提供事件绑定 -->
+    <input type="button" value="按钮" v-on:click="show">
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        // 方法，你上面执行事件都要在这里面定义
+        methods:{
+            show:function () {
+                alert('hello word')
+            }
+        }
+    })
+</script>
+</html>
