@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯效果</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <!-- v-bind 用来绑定属性，也可以简写为 ：，v-bind 可以写合法的js代码-->
+    <input type="button" value="浪起来" @click="lang"/>
+    <input type="button" value="低调" @click="stop"/>
+</div>
+</body>
+<script>
+    var  vm = new Vue({
+        el:'#app',
+        // 在vm中要调用data里面的属性或者methods的方法需要 this.属性值，this.方法名
+        data:{
+            mytitle:'hello word',
+            msg:'猥琐发育，别浪',
+            intervalId:null
+        },
+        methods:{
+            lang() {
+                // 判断定时状态是否是运行
+                if (this.intervalId!=null) return;
+                // =>:箭头函数，解决this指向问题，让this和外部this一致
+                this.intervalId = setInterval( () => {
+                    //截第一个字符串
+                    var start = this.msg.substring(0,1)
+                    // 截取后面的字符串
+                    var end = this.msg.substring(1)
+                    // 重新拼接
+                    this.msg = end+start
+                },400)
+            },
+            stop(){
+                // 清除定时器
+                clearInterval(this.intervalId)
+                // 将定时状态置为null
+                this.intervalId = null;
+            }
+        }
+    })
+</script>
+</html>
