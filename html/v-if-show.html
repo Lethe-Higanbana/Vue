@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-if/show</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="点击" @click="flag=!flag">
+    <!-- v-if:每次都会删除创建元素  v-show：不会每次都创建和删除元素，只是切换了元素的 display：none样式 -->
+    <!-- v-if：有较高的切换性能消耗  v-show：有较高的初始渲染消耗 -->
+    <p v-if="flag">v-if</p>
+    <p v-show="flag">v-show</p>
+</div>
+</body>
+<script>
+    // 创建一个Vue实例，这个实例就是 MVVM 的 VM 调度者
+    var vm = new Vue({
+        el:'#app', //要控制的区域，就是上面的那个id
+        /*data 就是 MVVM 的 M 专门保存数据*/
+        data:{
+            // 要使用的数据
+            flag:true
+        }
+    })
+</script>
+</html>
