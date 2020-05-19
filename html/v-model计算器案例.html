@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<!--将来new的Vue实例会根据id来控制这个元素区域的所有内容-->
+<!--Vue控制的区域就是 MVVM 中的 V-->
+<div id="app">
+    <input type="text" v-model="n1">
+    <select v-model="yunsuan">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" v-model="n2">
+    <input type="button" value="=" @click="add"/>
+    <input type="text" v-model="n3">
+</div>
+</body>
+<script>
+    // 创建一个Vue实例，这个实例就是 MVVM 的 VM 调度者
+    var vm = new Vue({
+        el:'#app', //要控制的区域，就是上面的那个id
+        /*data 就是 MVVM 的 M 专门保存数据*/
+        data:{
+            // 要使用的数据
+            n1:0,
+            n2:0,
+            n3:0,
+            yunsuan:'+'
+        },
+        methods:{
+            add(){
+                if (this.yunsuan=='+'){
+                    // 转成数字运算，否则+会被当成拼接字符串
+                    this.n3 = parseInt(this.n1) + parseInt(this.n2)
+                }else if (this.yunsuan=='-'){
+                    this.n3 = this.n1 - this.n2
+                }else if (this.yunsuan=='x'){
+                    this.n3 = this.n1 * this.n2
+                }else if (this.yunsuan=='/'){
+                    this.n3 = this.n1 / this.n2
+                }
+
+                // 投机取巧方式,不建议经常使用
+                // var re = 'parseInt(this.n1)' +this.yunsuan+ 'parseInt(this.n2)'
+                // this.n3 = eval(re)
+            }
+        }
+    })
+</script>
+</html>
