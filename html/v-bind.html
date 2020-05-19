@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- v-bind 用来绑定属性，也可以简写为 ：，v-bind 可以写合法的js代码-->
+    <button type="button" v-bind:title="mytitle"></button>
+    <button type="button" value="按钮" :title="mytitle"></button>
+</div>
+</body>
+<script>
+    var  vm = new Vue({
+        el:'#app',
+        data:{
+            mytitle:'hello word'
+        }
+    })
+</script>
+</html>
