@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<style type="text/css">
+    #app{
+        width: 700px;
+        height: 600px;
+        background: aqua;
+    }
+</style>
+<body>
+<div id="app">
+    <div id="inner" @click="innerbox">
+        <!--.stop阻止冒泡-->
+        <input type="button" value="戳一戳" @click.stop="inner">
+    </div>
+</div>
+</body>
+<script>
+    var  vm = new Vue({
+        el:'#app',
+        data:{
+            mytitle:'hello word'
+        },
+        methods:{
+            inner(){
+                console.log('触发button事件')
+            },
+            innerbox(){
+                console.log('触发box事件')
+            }
+        }
+
+    })
+</script>
+</html>
