@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue样式</title>
+    <script src="../js/vue-2.6.11.js"></script>
+    <style type="text/css">
+        .red{
+            color: aqua;
+        }
+        .thin{
+            font-family: "Roboto Thin";
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--普通-->
+    <h1 class="red thin">千山一暮，一城飞雪</h1>
+    <!--数组方式，用v-bind绑定,样式需要单引号-->
+    <h1 :class="['red','thin']">千山一暮，一城飞雪</h1>
+    <!--三目运算符-->
+    <h1 :class="['thin',flag?'red':'']">千山一暮，一城飞雪</h1>
+    <!--对象替代三目-->
+    <h1 :class="['thin',{'red':flag}]">千山一暮，一城飞雪</h1>
+    <!--直接,属性可带引号也可不带引号-->
+    <h1 :class="{red: true,thin:true}">千山一暮，一城飞雪</h1>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            flag:true,
+        }
+    })
+</script>
+</html>
