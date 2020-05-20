@@ -49,7 +49,7 @@
             <td>{{item.name}}</td>
             <td>{{item.ctime}}</td>
             <td>{{item.contry}}</td>
-            <td><button type="button" class="btn btn-primary">删除</button></td>
+            <td><button type="button" class="btn btn-primary" @click="clear(item.id)">删除</button></td>
         </tr>
         </tbody>
     </table>
@@ -78,8 +78,19 @@
             ]
         },
         methods:{
+            // 添加
             add(){
                 this.list.push({'id': this.id, 'name': this.name, 'ctime': new Date(), 'contry': this.contry})
+            },
+            // 删除
+            clear(id){
+                // some
+                this.list.some((item,i)=>{
+                    if (item.id == id){
+                        this.list.splice(i,1)
+                        return true;
+                    }
+                })
             }
         }
     })
