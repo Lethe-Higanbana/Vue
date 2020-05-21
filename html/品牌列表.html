@@ -31,6 +31,14 @@
         </div>
         <p></p>
         <button type="button" class="btn btn-primary" @click="add">添加</button>
+        <p></p>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="输入名称关键字搜索" v-model="keyword">
+            </div>
+        </div>
+        <p></p>
+        <button type="button" class="btn btn-primary" @click="search()">搜索</button>
     </form>
     <p></p>
     <table class="table table-bordered" style="text-align: center">
@@ -44,7 +52,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(item,i) in list" :key="item">
+        <tr v-for="(item,i) in search(keyword)" :key="item">
             <th scope="row">{{item.id}}</th>
             <td>{{item.name}}</td>
             <td>{{item.ctime}}</td>
@@ -65,6 +73,7 @@
             name:'',
             ctime:'',
             contry:'',
+            keyword:'',
             // 要使用的数据
             list:[
                 {'id':1,'name':'韩非','ctime':new Date(),'contry':'韩国'},
@@ -91,8 +100,29 @@
                         return true;
                     }
                 })
+            },
+            // 搜索
+            search(keyword){
+                var newlist = []
+                this.list.forEach(item => {
+                    if (item.name.indexOf(keyword)!=-1){
+                        newlist.push(item)
+                    }
+                })
+                return newlist
+                // 第二种，过滤器
+                /*return this.list.filter(item =>{
+                    for (item.name.includes(keyword)){
+                        return item
+                    }
+                })*/
             }
+            // 过滤器
+
         }
     })
 </script>
 </html>
+
+<!-- 过滤器的使用格式 {{name | 过滤器的名称}} -->
+<!-- 怎么定义 Vue.filter('过滤器的名称',function{}) -->
