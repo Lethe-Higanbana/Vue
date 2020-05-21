@@ -55,7 +55,7 @@
         <tr v-for="(item,i) in search(keyword)" :key="item">
             <th scope="row">{{item.id}}</th>
             <td>{{item.name}}</td>
-            <td>{{item.ctime}}</td>
+            <td>{{item.ctime | dataFormart}}</td>
             <td>{{item.contry}}</td>
             <td><button type="button" class="btn btn-primary" @click="clear(item.id)">删除</button></td>
         </tr>
@@ -64,6 +64,16 @@
 </div>
 </body>
 <script>
+
+    // 全局过滤器,时间格式化
+    Vue.filter('dataFormart',function (datastr) {
+        var dt = new Date(datastr);
+        var year = dt.getFullYear();
+        var month = dt.getMonth();
+        var day = dt.getDate();
+        return `${year}-${month}-${day}`
+    })
+
     // 创建一个Vue实例，这个实例就是 MVVM 的 VM 调度者
     var vm = new Vue({
         el:'#app', //要控制的区域，就是上面的那个id
