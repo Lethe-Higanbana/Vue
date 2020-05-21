@@ -13,8 +13,8 @@
 <!-- 过滤器的使用格式 {{name | 过滤器的名称}} -->
 <!-- 怎么定义 Vue.filter('过滤器的名称',function{}) -->
 <script>
-    // 过滤器，名称叫msgFormart
-    Vue.filter('msgFormart',function (msg) {
+    // 全局过滤器，名称叫msgFormart
+    Vue.filter('msgFormart',function (msg,pattern='') {
         // 替换
         return msg.replace('雪','血')
     })
@@ -22,6 +22,10 @@
         el:'#app',
         data:{
             msg:'千山一暮，一城飞雪'
+        },
+        // 私有过滤器，如果全局和私有过滤器重名了，则优先私有过滤器
+        filters:{
+
         }
     })
 </script>
