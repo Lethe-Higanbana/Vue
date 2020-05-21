@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器的使用</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+<p>{{msg | msgFormart}}</p>
+</div>
+</body>
+<!-- 过滤器的使用格式 {{name | 过滤器的名称}} -->
+<!-- 怎么定义 Vue.filter('过滤器的名称',function{}) -->
+<script>
+    // 过滤器，名称叫msgFormart
+    Vue.filter('msgFormart',function (msg) {
+        // 替换
+        return msg.replace('雪','血')
+    })
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'千山一暮，一城飞雪'
+        }
+    })
+</script>
+</html>
