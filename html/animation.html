@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <script src="../js/vue-2.6.11.js"></script>
+    <style>
+        /* v-enter 时间节点，代表动画开始前 */
+        .v-enter,
+        /* .v-leave-to 时间节点，代表动画结束后 */
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(300px);
+        }
+        /* 出场动画时间点 */
+        .v-enter-active,
+        /*v-leave-active离场动画时间点*/
+        .v-leave-active{
+            transition: all 2s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="你点我啊" @click="flag=!flag">
+        <!-- transition是vue官方提供的动画标签 -->
+        <transition>
+            <h3 v-if="flag">1234567890</h3>
+        </transition>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            flag:false
+        },
+        methods:{
+
+        }
+
+    })
+</script>
+</html>
