@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <script src="../js/vue-2.6.11.js"></script>
+    <!--引入样式库-->
+    <link rel="stylesheet" href="../css/animate.min.css">
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="你点我啊" @click="flag=!flag">
+        <!-- transition是vue官方提供的动画标签 -->
+        <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
+            <h3 v-if="flag">1234567890</h3>
+        </transition>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            flag:false
+        },
+        methods:{
+
+        }
+
+    })
+</script>
+</html>
