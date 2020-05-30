@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的创建方式1</title>
+    <script src="../js/vue-2.6.11.js"></script>
+</head>
+<body>
+<div id="app">
+<!-- 可以直接以HTML的标签形式引用组件，注意：如果Vue.component定义组件是采用驼峰命名的方式则采用 a-b 的形式，如果没采用驼峰则直接调用即可 -->
+    <mycoml></mycoml>
+</div>
+</body>
+<script>
+    // 使用 vue.extend 来创建全局 Vue 组件
+    var coml = Vue.extend({
+        template:'<h3>创建组件的方式1</h3>'   // 这里可以插入HTML结构
+    })
+    // 通过 Vue.component('组件名称',创建的组件对象) 来获取定义组件
+    Vue.component('mycoml',coml)
+    var vm = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
